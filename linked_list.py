@@ -10,7 +10,7 @@
 
 #     def printList(self):
 #         temp = self.data
-#         while temp:
+#         while temp:f
 #             print (temp.data)
 #             temp = temp.next
     
