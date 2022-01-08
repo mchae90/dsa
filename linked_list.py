@@ -102,14 +102,45 @@ class LinkedList:
                 return
             current_index += 1
 
+# ll = LinkedList()
+# ll.append(1)
+# ll.append(2)
+# ll.append(3)
+# ll.append(4)
+
+# ll.display()
+# print(ll.get(5))
+
+# ll.erase(2)
+# ll.display()
+
+
+class Node:
+    def __init__(self, data = None):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = Node()
+
+    def append(self, data):
+        new_node = Node(data)
+        current = self.head
+        while (current.next != None):
+            current = current.next
+        current.next = new_node
+
+    def length(self):
+        count = 0
+        current = self.head
+        while (current.next != None):
+            count += 1
+            current = current.next
+        return count
+        
+    
 ll = LinkedList()
 ll.append(1)
 ll.append(2)
-ll.append(3)
-ll.append(4)
-
-ll.display()
-print(ll.get(5))
-
-ll.erase(2)
-ll.display()
+print(ll.length())
