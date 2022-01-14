@@ -143,4 +143,4 @@ class LinkedList:
 ll = LinkedList()
 ll.append(1)
 ll.append(2)
-print(ll.length())
+print(ll.head.next.data)
