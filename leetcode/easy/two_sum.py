@@ -11,8 +11,15 @@ twoSum([2,7,11,15], 9)
 def twoSum2(nums, target):
     hash_map = {}
     for i in range(len(nums)):
-        comp = target - nums[i]
-        if comp in hash_map:
-            return [i, hash_map[comp]]
+        diff = target - nums[i]
+        if diff in hash_map:
+            return [i, hash_map[diff]]
         else:
             hash_map[nums[i]] = i
+
+# Key - Take difference between target and current item in nums array.  Check if in hash map.  
+# If yes, return current index and comp's index.  
+# If no, push to hash map {hash_map[nums[i]]: i}
+
+# SC O(n)
+# TC O(n)
