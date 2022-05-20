@@ -20,6 +20,8 @@ def twoSum2(nums, target):
 # Key - Take difference between target and current item in nums array.  Check if in hash map.  
 # If yes, return current index and comp's index.  
 # If no, push to hash map {hash_map[nums[i]]: i}
+# Important: store the value as key and index as value.  This will allow you to return the two indexes as answer more easily
+# If you store in the dict the other way around, it will be more difficult to return the indexes, resulting in larger TC
 
 # SC O(n)
 # TC O(n)

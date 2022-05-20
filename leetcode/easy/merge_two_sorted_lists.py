@@ -22,3 +22,8 @@ def merge_two_sorted_lists(list1, list2):
         tail.next = list2
     
     return dummy.next
+
+    # Key: Initiate dummy node and keep comparing heads of l1 and l2, attaching smaller value to the dummy tail.
+    # Requires dummy node, tail pointer, pointers to two lists.
+    # TC: O(n1 + n2)
+    # SC: O(1)

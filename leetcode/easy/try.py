@@ -1,28 +1,21 @@
-from pip import List
 
 
-# def twoSum(self, nums: List[int], target: int) -> List[int]:
-def twoSum(nums, target):
-    nums_dict = {}
+def try1(list1, list2):
+    dummy = ListNode()
+    tail = dummy
 
-    for i in range(len(nums)):
-        # if difference in hash map, 
-        diff = target - nums[i]
-        if diff in nums_dict:
-            print(i, nums_dict[diff])
-            return [i, nums_dict[diff]]
+    while list1 and list2:
+        if list1.val < list2.val:
+            tail.next = list1
+            list1 = list1.next
         else:
-            nums_dict[nums[i]] = i
+            tail.next = list2
+            list2 = list2.next
+        tail = tail.next
+        
+    if list1:
+        tail.next = list1
+    if list2:
+        tail.next = list2
 
-
-    # [2,7,5,1] 
-    # target = 6
-    # answer = [2,3]
-
-    # [1,2,4,4,9]
-    # target = 8
-
-    # hash map {2:0, 7:1, 5:2, 1:3}
-    # hash map {0:2, 1:7, 2:5, 3:1}
-
-twoSum([2,7,5,1], 6)
+    return dummy.next 
