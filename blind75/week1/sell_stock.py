@@ -10,3 +10,8 @@ def maxProfit(prices):
             maxP = max(maxP, profit)
         r += 1
     return maxP
+
+# Key: two pointers - l (buy), r (sell)
+# increment r buy 1 every iteration.  Update maximum if profit is bigger than current max
+# TC: O(n)
+# SC: O(1)
