@@ -1,21 +1,26 @@
-def isValid(s):
-    hash_map = {
-        ')': '(',
-        '}': '{',
-        ']': '[',
-    }
-    stack = []
-    for i in s:
-        if i in hash_map:
-            if stack and stack[-1] == hash_map[i]:
-                stack.pop()
+class Solution:
+    def isValid(self, s: str) -> bool:
+        par_map = {
+            '}': '{',
+            ']': '[',
+            ')': '('
+        }
+        
+        par_stack = []
+        
+        for c in s:
+            if c in par_map:
+                if par_stack and par_stack[-1] == par_map[c]:
+                    par_stack.pop()
+                else:
+                    return False
             else:
-                return False
-        else:
-            stack.append(i)
-    return True if not stack else False
-
-isValid('[]')
+                par_stack.append(c)
+                
+        if par_stack:
+            return False
+    
+        return True
 
 # Note: Use a stack only appending open parenthesis.  Check if character is open/closed using a hash map.
 # TC: O(n) - worst case you go through entire array

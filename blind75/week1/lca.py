@@ -15,6 +15,4 @@ def lca(root, p, q):
     else:
         lca(root.right, p, q)
 
-# in LNR
-# pre NLR
-# post LRN
+# TC: O(logn)

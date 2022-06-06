@@ -1,21 +1,11 @@
 
 
-def try1(list1, list2):
-    dummy = ListNode()
-    tail = dummy
+def try1(nums):
+            
+    for i in range(0, len(nums)):
+        for j in range(i + 1, len(nums)):
+            if nums[i] == nums[j]: 
+                print(i, j)
+    
 
-    while list1 and list2:
-        if list1.val < list2.val:
-            tail.next = list1
-            list1 = list1.next
-        else:
-            tail.next = list2
-            list2 = list2.next
-        tail = tail.next
-        
-    if list1:
-        tail.next = list1
-    if list2:
-        tail.next = list2
-
-    return dummy.next 
+try1([1,2,3,4,1])
