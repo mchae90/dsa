@@ -1,11 +1,18 @@
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
 
+    return n  * factorial(n - 1)
 
-def try1(nums):
-            
-    for i in range(0, len(nums)):
-        for j in range(i + 1, len(nums)):
-            if nums[i] == nums[j]: 
-                print(i, j)
+# print(factorial(3))
+
+def fib(n):
+
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
     
+    return fib(n - 1) + fib(n - 2)
 
-try1([1,2,3,4,1])
+print(fib(6))

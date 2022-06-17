@@ -1,3 +1,5 @@
+from collections import deque
+
 class Node:
     def __init__(self, data = None):
         self.data = data
@@ -22,6 +24,27 @@ def post_order_traversal(root):
         post_order_traversal(root.right)
         print(root.data)
 
+def bfs(root):
+    res = []
+    
+    if not root:
+        return res
+
+    q = deque()
+    q.append(root)
+
+    while q:
+        cur_lev = []
+        for n in range(len(q)):
+            pop = q.popleft()
+            cur_lev.append(pop.val) 
+            if pop.left:
+                q.append(pop.left)
+            if pop.right:
+                q.append(pop.right)
+        res.append(cur_lev)
+    return res
+
 root = Node(10)
 root.left = Node(7)
 root.left.left = Node(6)
@@ -35,4 +58,4 @@ root.right.right.left = Node(14)
 root.right.right.right = Node(22)
 
 
-print(post_order_traversal(root))
+print(bfs(root))
