@@ -1,5 +1,17 @@
-def test():
-    for i in range(-1, -1, -1):
-        print(i)
+def finalString(s):
+    
+    res = []
+    
+    for c in s:
+        if c == '#':
+            if res:
+                res.pop()
+        else:
+            res.append(c)
+    
+    return res
 
-print(test())
+print(finalString("y#f#o##f"))
+
+# "y#fo##f"
+# "y#f#o##f"
