@@ -1,17 +1,6 @@
-def finalString(s):
-    
-    res = []
-    
-    for c in s:
-        if c == '#':
-            if res:
-                res.pop()
-        else:
-            res.append(c)
-    
-    return res
+from collections import deque
 
-print(finalString("y#f#o##f"))
+q = deque([])
 
-# "y#fo##f"
-# "y#f#o##f"
+while q:
+    print('h')
