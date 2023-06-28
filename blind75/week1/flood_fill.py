@@ -20,3 +20,21 @@ def floodFill(self, image: List[List[int]], sr: int, sc: int, newColor: int) -> 
     # Call recursively for the 4 pixels surrounding
     # TC: O(n): n is number of pixels
     # SC: O(n)
+
+class Solution:
+    def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
+        rows, cols = len(image), len(image[0])
+        original = image[sr][sc]
+        
+        def dfs(r, c):
+            if r not in range(rows) or c not in range(cols) or image[r][c] != original or image[r][c] == color:
+                return
+            image[r][c] = color
+
+            directions = [(1, 0), (0, 1), (-1, 0), (0, -1)]
+            for dr, dc in directions:
+                dfs(r + dr, c + dc)
+        
+        dfs(sr, sc)
+        return image
+    

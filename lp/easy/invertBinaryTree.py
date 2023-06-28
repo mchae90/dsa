@@ -5,7 +5,7 @@
 #         self.left = left
 #         self.right = right
 
-
+# Recursive
 class Solution:
     def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
         
@@ -21,3 +21,33 @@ class Solution:
 
 # TC: O(n) - each node is visited once
 # SC: O(h) - h is height of tree
+
+# DFS iterative
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        stack = []
+        stack.append(root)
+
+        while stack:
+            node = stack.pop()
+            if node:
+                node.left, node.right = node.right, node.left
+                stack.append(node.left)
+                stack.append(node.right)
+        
+        return root
+
+# BFS iterative
+class Solution:
+    def invertTree(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
+        q = deque()
+        q.append(root)
+
+        while q:
+            node = q.popleft()
+            if node:
+                node.left, node.right = node.right, node.left
+                q.append(node.left)
+                q.append(node.right)
+            
+        return root
