@@ -14,7 +14,25 @@ class Solution:
 # TC: O(n)
 # SC: O(1)
 
-# Dynamic Programming
+# DP - memoization
+class Solution:
+    def __init__(self):
+        self.memo = {}
+    
+    def climbStairs(self, n: int) -> int:
+        if n < 2:
+            return 1
+        
+        if n in self.memo:
+            return self.memo[n]
+        
+        res = self.climbStairs(n - 1) + self.climbStairs(n - 2)
+        
+        self.memo[n] = res
+        
+        return res
+        
+# Dynamic Programming - tabulation
 class Solution:
     def climbStairs(self, n: int) -> int:
         if n == 1:

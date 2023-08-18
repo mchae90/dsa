@@ -1,61 +1,95 @@
-from collections import deque
+# PREORDER
 
-class Node:
-    def __init__(self, data = None):
-        self.data = data
-        self.left = None
-        self.right = None
+# iterative
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        stack = []
+        stack.append(root)
+        res = []
 
-def in_order_traversal(root):
-    if root:
-        in_order_traversal(root.left)
-        print(root.data)
-        in_order_traversal(root.right)
+        while stack:
+            pop = stack.pop()
 
-def pre_order_traversal(root):
-    if root:
-        print(root.data)
-        pre_order_traversal(root.left)
-        pre_order_traversal(root.right)
+            if pop:
+                res.append(pop.val)
+                stack.append(pop.right)
+                stack.append(pop.left)
 
-def post_order_traversal(root):
-    if root:
-        post_order_traversal(root.left)
-        post_order_traversal(root.right)
-        print(root.data)
-
-def bfs(root):
-    res = []
-    
-    if not root:
         return res
 
-    q = deque()
-    q.append(root)
+# recursive
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
 
-    while q:
-        cur_lev = []
-        for n in range(len(q)):
-            pop = q.popleft()
-            cur_lev.append(pop.val) 
-            if pop.left:
-                q.append(pop.left)
-            if pop.right:
-                q.append(pop.right)
-        res.append(cur_lev)
-    return res
+        def dfs(root):
+            if not root:
+                return
+            
+            res.append(root.val)
+            dfs(root.left)
+            dfs(root.right)
+        
+        dfs(root)
+        return res
+    
 
-root = Node(10)
-root.left = Node(7)
-root.left.left = Node(6)
-root.left.left.left = Node(1)
-root.left.right = Node(8)
-root.left.right.right = Node(9)
+# INORDER
 
-root.right = Node(11)
-root.right.right = Node(20)
-root.right.right.left = Node(14)
-root.right.right.right = Node(22)
+# iterative
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+        stack = []
+
+        cur = root
+
+        while True:
+            while cur:
+                stack.append(cur)
+                cur = cur.left
+            
+            if not stack:
+                return res
+            
+            cur = stack.pop()
+            res.append(cur.val)
+            cur = cur.right
+        
+        return res
+
+class Solution:
+    def inorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+
+        def dfs(root):
+            if not root:
+                return
+            
+            dfs(root.left)
+            res.append(root.val)
+            dfs(root.right)
+        
+        dfs(root)
+        return res
+    
+# POSTORDER
+
+# iterative
 
 
-print(bfs(root))
+# recursive
+class Solution:
+    def postorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        res = []
+
+        def dfs(root):
+            if not root:
+                return
+            dfs(root.left)
+            dfs(root.right)
+            res.append(root.val)
+        
+        dfs(root)
+        
+        return res

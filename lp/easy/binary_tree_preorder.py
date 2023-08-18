@@ -2,20 +2,19 @@
 class Solution:
     def preorder(self, root: 'Node') -> List[int]:
 
-        if not root:
-            return
-
+        stack = []
+        stack.append(root)
         res = []
-        stack = [root]
 
         while stack:
-            cur = stack.pop()
-            if cur.children:
-                stack.extend(cur.children[::-1])
-            res.append(cur.val)
-            
-        return res
+            pop = stack.pop()
 
+            if pop:
+                res.append(pop.val)
+                stack.append(pop.right)
+                stack.append(pop.left)
+
+        return res
 
 # Recursive
 class Solution:

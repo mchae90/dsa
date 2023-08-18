@@ -27,3 +27,6 @@ class Solution:
 # If base cases are not met, that means p and q are not null.
 # Define root, assign left and right values recursively.
 # Return root
+
+# TC: O(m) - m being minimum number of nodes between both trees
+# SC: O(m)
